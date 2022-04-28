@@ -1,2 +1,2 @@
-This is my first codebuild test in AWS
-We will check if its fine or not
+This is my newtest codebuild test in AWS
+will see it will luck or not
