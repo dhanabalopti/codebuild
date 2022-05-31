@@ -6,7 +6,9 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - sudo rm -rf pcb_front scripts appspec.yml .git
+      - sudo ls -al | grep -v pcb_api | awk {'print $9'} | xargs rm -rf
+      - sudo aws s3 cp s3://my-test-mumbai/.firstapp  . --recursive --dryrun
+      - sudo aws s3 cp s3://my-test-mumbai/.secondapp  . --recursive --dryrun
   build:
     commands:
       - echo Build started on `date`      
