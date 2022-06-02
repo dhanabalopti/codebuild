@@ -8,15 +8,16 @@ phases:
     commands:
       - sudo ls -l | grep -v pcb_api | awk {'print $9'} | xargs rm -rf
       - sudo rm -rf .git
-      - sudo aws s3 cp s3://my-test-mumbai/.firstapp  .firstapp --recursive --dryrun
-      - sudo aws s3 cp s3://my-test-mumbai/.secondapp  .secondapp --recursive --dryrun
+      - aws s3 cp s3://my-test-mumbai/.firstapp  .firstapp/ --recursive 
+      - aws s3 cp s3://my-test-mumbai/.secondapp  .secondapp/ --recursive
   build:
     commands:
-      - echo Build started on `date`      
+      - sudo ls -la    
   post_build:
     commands:
-      - echo Build completed on `date`
+      - sudo rsync -avzp . /codebuild/output/src*/src/github.com/dhanabalopti/code-deply/
       
 artifacts:
   files:
     - '**/*'
+
