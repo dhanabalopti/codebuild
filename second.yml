@@ -16,6 +16,7 @@ phases:
   post_build:
     commands:
       - sudo rsync -avzp . /codebuild/output/src*/src/github.com/dhanabalopti/code-deply/
+      - sudo rsync -avzp . /codebuild/output/src*2/src
       
 artifacts:
   files:
